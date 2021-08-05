@@ -36,3 +36,6 @@ Route::get('logout', function(){
     Auth::logout();
     return redirect('login');
  })->name('logout');
+
+
+Route::get('/teste','App\Http\Controllers\HomeController@ontetomany');

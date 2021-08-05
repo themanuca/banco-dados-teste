@@ -15,11 +15,13 @@
             <label for="exampleFormControlSelect1">Categoria do produto</label>
 
             <select class="form-control" id="exampleFormControlSelect1" name='categoria_id'>
+                <option>Selecione uma cateogoria</option>
+                @foreach ($cat as $cat )
+                    <option class='ds' value="{{$cat->id}}">{{$cat->categoria}}</option>    
+                @endforeach
                 
-                
-                <option class='ds' value="1">1</option>
-                <option class='ds' value="2">2</option>
-                <option class='ds' value="3">3</option>
+                {{-- <option class='ds' value="2">2</option>
+                <option class='ds' value="3">3</option> --}}
                 
             </select>
             </div>

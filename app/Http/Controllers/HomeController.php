@@ -72,8 +72,10 @@ class HomeController extends Controller
 
     public function produto(){
         
-
-        return view('produto');
+        $cat = $this->objcat->where('idcategoria', 0)->get();
+        
+        return view('produto',compact('cat'));
+        
     }
 
 
@@ -99,9 +101,27 @@ class HomeController extends Controller
     }
 
 
-    public function donwloadfile()
-    {
+    public function ontetomany(Request $request)
+    {   
+
+        $input = $request->all();
+        $categoria = categorias::where('idcategoria','LIKE',0)->get(); //PASSANDO OS PARAMETROS DE BUSCA PARA PUXAR DO BANCO
+        
+        foreach($categoria as $categoria){ //QUANDO SE TRATA DE VARIOS VALORES, PRECISAMOS DAR UM LOOP PARA NÃO DA ERRO
             
+            echo "<b>$categoria->categoria</b>"; //ITENS NA COLUNA CATEGORIA
+
+            $dados = $categoria->dados()->get(); //CHAMANDO FUNÇÃO COMO METODO DA MODEL CATEGORIA
+
+
+            foreach($dados as $dados){ //LOOP PARA CHAMAR OS NOMES DOS INTENS NA TABELA PRODUTO
+                echo "<br>{$dados->nome}";
+            }
+        
+            echo "<hr>";
+        }
+        
+        
     }
 
 
