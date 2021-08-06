@@ -83,8 +83,7 @@ class HomeController extends Controller
 
     public function cadastroproduto(Request $request)    // Cadastro dos itens para o banco
     {   
-        // $prd = Produto::all();
-        // dd($prd);
+      
 
         $extension = $request->file('file_path')->getClientOriginalExtension();
        
@@ -110,31 +109,25 @@ class HomeController extends Controller
         $input = $request->all();
         $categoria = categorias::where('categoria',$input['categoria'])->get()->first(); //PASSANDO OS PARAMETROS DE BUSCA PARA PUXAR DO BANCO
         
-        echo $categoria->categoria;
+        
         $dados = $categoria->dados()->get();
 
-        return response ()->json(
+        return response ()->json( //ENVIANDO OS VALORS JSON PARA O JQUERY (REDE DO INSPECIONAR)
             $dados
         );
-
-
-
-        // foreach($categoria as $categoria){ //QUANDO SE TRATA DE VARIOS VALORES, PRECISAMOS DAR UM LOOP PARA NÃO DA ERRO
-            
-        //     echo "<b>$categoria->categoria</b>"; //ITENS NA COLUNA CATEGORIA
-
-        //     $dados = $categoria->dados()->get(); //CHAMANDO FUNÇÃO COMO METODO DA MODEL CATEGORIA
-
-
-        //     foreach($dados as $dados){ //LOOP PARA CHAMAR OS NOMES DOS INTENS NA TABELA PRODUTO
-        //         echo "<br>{$dados->nome}";
-        //     }
-        
-        //     echo "<hr>";
-        // }
         
         
     }
+
+
+    public function getDownload($dados)
+    {
+
+        return  response()->download();
+    }
+
+
+
 
 
 }

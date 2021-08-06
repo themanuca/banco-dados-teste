@@ -24,44 +24,37 @@ $('#aqui').on('change', function(){
 			$("select[name='subcategoria']").append('<option value='+ value.id + '>' + value.categoria+'</option>');
 		});
 		
-		var js = '{"nome":"Sergio", "idade":30}';
+		$.getJSON("/teste/",{categoria:s})
+			.done(function(dados){
+			//console.log(dados);
 
-		console.log(js);
+			var objstr = JSON.stringify(dados); //Transforma o valor JSON que vem como objeto, para ARRAY
 
-		// $.get("/teste/",{categoria:s},function(dados){
-		// 	console.log(js);
+			//console.log(objstr);
+
+			var obj = JSON.parse(objstr); //Tratando valor do ARRAY, para ser usado com o jquery
 			
-		// 	// $.each(dados, function(key, val){
-		// 	// 	$("div[name='resultado']").append('<ul class=list-group><li class=list-group-item>' + val + key + '</li></ul>');
-		// 	// });
-		// 	// // mjs = JSON.parse(dados.responseText);
+			//console.log(obj);
 			
 			
-		// 	// $("div[name='resultado']").append('<ul class=list-group><li class=list-group-item>' + json_decode + '</li></ul>')
-		// })
+			$.each(obj,function(index,valor){
+				//console.log(obj);
+				$(".table > tbody").append('<tr><td>'+valor.id+'</td>'+'<td>'+valor.nome+'</td><td>' + valor.textoarea+'</td>'+ '<td><a href='+" {{route('download', $file->id)}}"+' download></a>  </td></tr>');
+			});
+			
+
 
 
 		
-		
+		});	
 
-		// $("div[name='resultado']").html("");
-		// $.each(data,function(intedx,value){
-		// 	console.log(data);
-				
-		// })
 		
-			
-		//VALORES JÁ APARECEM NO CONSOLE E LA NA TELA, PRECISANDO SER TRATADO !
-	
 	})
 
 	
 
 
-	$.get("/teste/",{categoria:s})
-		.done(function(dados){
-			console.log(js);
-	});	
+	
 	
 })
 	
