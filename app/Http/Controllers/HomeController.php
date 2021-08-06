@@ -36,7 +36,7 @@ class HomeController extends Controller
     
 
 
-    public function categoria(Request $request)
+    public function categoria(Request $request)     //PUXAR OS DADOS DA CATEGORIA PRINCIPAL
     {   
         // $user = $request->categorias; // returns an instance of the authenticated user...
         // $id = $request->user()->id;
@@ -55,7 +55,9 @@ class HomeController extends Controller
     }
 
     
-    public function conscategoria(Request $request)
+
+
+    public function conscategoria(Request $request) //Puxa os dados da subcategoria
     {
         // $car = 'sda';
         $input = $request->all();
@@ -70,7 +72,7 @@ class HomeController extends Controller
     }
 
 
-    public function produto(){
+    public function produto(){ //Puxar os dados da categoria principal no ato de subir para o banco
         
         $cat = $this->objcat->where('idcategoria', 0)->get();
         
@@ -79,7 +81,7 @@ class HomeController extends Controller
     }
 
 
-    public function cadastroproduto(Request $request)    
+    public function cadastroproduto(Request $request)    // Cadastro dos itens para o banco
     {   
         // $prd = Produto::all();
         // dd($prd);
@@ -101,25 +103,35 @@ class HomeController extends Controller
     }
 
 
+
     public function ontetomany(Request $request)
     {   
 
         $input = $request->all();
-        $categoria = categorias::where('idcategoria','LIKE',0)->get(); //PASSANDO OS PARAMETROS DE BUSCA PARA PUXAR DO BANCO
+        $categoria = categorias::where('categoria',$input['categoria'])->get()->first(); //PASSANDO OS PARAMETROS DE BUSCA PARA PUXAR DO BANCO
         
-        foreach($categoria as $categoria){ //QUANDO SE TRATA DE VARIOS VALORES, PRECISAMOS DAR UM LOOP PARA NÃO DA ERRO
+        echo $categoria->categoria;
+        $dados = $categoria->dados()->get();
+
+        return response ()->json(
+            $dados
+        );
+
+
+
+        // foreach($categoria as $categoria){ //QUANDO SE TRATA DE VARIOS VALORES, PRECISAMOS DAR UM LOOP PARA NÃO DA ERRO
             
-            echo "<b>$categoria->categoria</b>"; //ITENS NA COLUNA CATEGORIA
+        //     echo "<b>$categoria->categoria</b>"; //ITENS NA COLUNA CATEGORIA
 
-            $dados = $categoria->dados()->get(); //CHAMANDO FUNÇÃO COMO METODO DA MODEL CATEGORIA
+        //     $dados = $categoria->dados()->get(); //CHAMANDO FUNÇÃO COMO METODO DA MODEL CATEGORIA
 
 
-            foreach($dados as $dados){ //LOOP PARA CHAMAR OS NOMES DOS INTENS NA TABELA PRODUTO
-                echo "<br>{$dados->nome}";
-            }
+        //     foreach($dados as $dados){ //LOOP PARA CHAMAR OS NOMES DOS INTENS NA TABELA PRODUTO
+        //         echo "<br>{$dados->nome}";
+        //     }
         
-            echo "<hr>";
-        }
+        //     echo "<hr>";
+        // }
         
         
     }
