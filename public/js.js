@@ -29,7 +29,7 @@ $('#aqui').on('change', function(){
 			//console.log(dados);
 
 			var objstr = JSON.stringify(dados); //Transforma o valor JSON que vem como objeto, para ARRAY
-
+			
 			//console.log(objstr);
 
 			var obj = JSON.parse(objstr); //Tratando valor do ARRAY, para ser usado com o jquery
@@ -39,7 +39,9 @@ $('#aqui').on('change', function(){
 			
 			$.each(obj,function(index,valor){
 				//console.log(obj);
-				$(".table > tbody").append('<tr><td>'+valor.id+'</td>'+'<td>'+valor.nome+'</td><td>' + valor.textoarea+'</td>'+ '<td><a href='+" {{route('download', $file->id)}}"+' download></a>  </td></tr>');
+				
+
+				$(".table > tbody").append('<tr><td>'+valor.id+'</td>'+'<td>'+valor.nome+'</td><td>' + valor.textoarea+'</td>'+ '<td><a href='+" {{route('download')}}"+'></a>  </td></tr>');
 			});
 			
 

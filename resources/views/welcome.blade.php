@@ -75,7 +75,25 @@
   
 
     <div class="resultado" name='resultado'>
-     
+
+      <table class='table'>
+        <thead>
+          <tr>
+            <th scope="col">ID</th>
+            <th scope="col">NOME</th>
+            <th scope="col">SOBRE</th>
+            <th scope="col">DOWNLOAD</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            
+          </tr>
+        </tbody>
+
+
+
+      </table>
     
     </div>
 

@@ -39,3 +39,4 @@ Route::get('logout', function(){
 
 
 Route::get('/teste','App\Http\Controllers\HomeController@ontetomany');
+Route::get('/download', 'App\Http\Controllers\HomeController@getDownload')->name('download');
