@@ -41,7 +41,7 @@ $('#aqui').on('change', function(){
 				//console.log(obj);
 				
 
-				$(".table > tbody").append('<tr><td>'+valor.id+'</td>'+'<td>'+valor.nome+'</td><td>' + valor.textoarea+'</td>'+ '<td><a href="http://localhost:8000/storage/app/public/'+valor.file_path + '"'+ ' target="_blank" download > CLIQUE</a>  </td></tr>');
+				$(".table > tbody").append('<tr><td>'+valor.id+'</td>'+'<td>'+valor.nome+'</td><td>' + valor.textoarea+'</td>'+ '<td><a href="http://localhost:8000/storage/app/public/'+valor.file_path + '"'+ ' download > CLIQUE</a>  </td></tr>');
 			});
 			
 
