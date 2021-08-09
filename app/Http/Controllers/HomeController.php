@@ -120,28 +120,7 @@ class HomeController extends Controller
     }
 
 
-    public function getDownload(Request $request)
-    {
-        // dd($request);
-        
-        // echo '133';
-
-        // $dl = Produto::find($id);
-        // return Storage::download($dl->file_path, $dl->nome)->json();
-        
-        
-        if(Storage::disk('local')->exists("$request->file_path")){
-            $path = Storage::disk('local')->path("$request->file_path");
-            dd($path);
-            $content = file_get_contents($path);
-            return response($content)->withHeaders([
-                'Content-type'=> mime_content_type($path)
-            ]);
-        }
-        // return redirect()->back();
-        // // return  response()->download();
-    }
-
+    
 
 
 
