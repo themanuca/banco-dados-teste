@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\categorias;
 use App\Models\subcategorias;
 use App\Models\Produto;
+use Cache;
 class HomeController extends Controller
 {
 
@@ -121,7 +122,17 @@ class HomeController extends Controller
 
 
     
+    public function conluidoDW($request)
+    {
 
+        //USANDO A MODEL / TABELA "SUBCATEGORIA", PARA ARMAZENAR O QUANTIDADE DE DOWNLOAD. APENAS PREGUIÇA DE CRIAR UM OUTRA.
+
+        $QtdParcela = $request->get('count');
+        echo $QtdParcela; //PASSANDO OS PARAMETROS DE BUSCA PARA PUXAR DO BANCO
+
+
+        
+    }
 
 
 

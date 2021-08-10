@@ -9,12 +9,16 @@ if (btn){
 	btn.addEventListener('click', off);
 };
 
+
+contDW = 0;
+
 $('#aqui').on('change', function(){
 
 	//console.log($(this))
 	var x = $("#aqui :selected").val();
 	var s = $("#aqui :selected").text();
-		
+	var k = "Ferrari";
+
 	$.get( "/categoria/", { id:x} )
   		.done(function( data ) {
 		
@@ -37,15 +41,38 @@ $('#aqui').on('change', function(){
 			//console.log(obj);
 			
 			
+			
 			$.each(obj,function(index,valor){
 				//console.log(obj);
 				
 
-				$(".table > tbody").append('<tr><td>'+valor.id+'</td>'+'<td>'+valor.nome+'</td><td>' + valor.textoarea+'</td>'+ '<td><a href="http://localhost:8000/storage/app/public/'+valor.file_path + '"'+ ' download > CLIQUE</a>  </td></tr>');
+				$(".table > tbody").append('<tr><td>'+valor.id+'</td>'+'<td>'+valor.nome+'</td><td>' + valor.textoarea+'</td>'+ '<td class="dw"><a href="http://localhost:8000/storage/app/public/'+valor.file_path +  '" '+ '  download  > CLIQUE</a>  </td></tr>');
+				
+				
+				$(".dw").on('click', function(){
+					
+					
+					// window.open('http://localhost:8000/teste/download','_blank');
+					
+					$.get("/teste/download").done(function(){
+						var count = 0;
+						console.log(count);
+						
+
+
+					})
+					
+					
+					
+					
+				})
+
+				
+				
 			});
 			
 
-
+			
 
 		
 		});	
