@@ -128,11 +128,13 @@ class HomeController extends Controller
 
         // CONSIGO FAZER O SAVE NO BANCO A CADA CLIQUI NO DOWNLOAD, POREM VAI SALVANDO COMO CADA ITEM NOVO.
 
-        $dwc = Flight::where('downloads',0)->get()->first();
+        $dwc =  Flight::where('id',1)->get()->first(); // AQUI EU PUXO OS DADOS DO BANCO
         
-        $value = $dwc->downloads += 1;
-    
-        echo $value;
+        $value = $dwc->downloads += 1; // AQUI ACESSO O ITEM DA TABELA E FAÇO INCREMENTO
+
+        $v=Flight::where('id',1)->update(['downloads'=> $value]); // AQUI PASSO O COMANDO DE UPDATE PARA O BANCO
+        
+        echo $v;
 
         // $count = new Flight;
         // $count->downloads ++;
