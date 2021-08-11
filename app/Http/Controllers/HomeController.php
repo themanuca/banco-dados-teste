@@ -7,7 +7,7 @@ use App\Models\categorias;
 use App\Models\subcategorias;
 use App\Models\Produto;
 use App\Models\Flight;
-use Cache;
+
 class HomeController extends Controller
 {
 
@@ -125,8 +125,19 @@ class HomeController extends Controller
     
     public function conluidoDW(Request $request)
     {
+
+        // CONSIGO FAZER O SAVE NO BANCO A CADA CLIQUI NO DOWNLOAD, POREM VAI SALVANDO COMO CADA ITEM NOVO.
+
+        $dwc = Flight::where('downloads',0)->get()->first();
         
-       
+        $value = $dwc->downloads += 1;
+    
+        echo $value;
+
+        // $count = new Flight;
+        // $count->downloads ++;
+        // $count->save();
+
     }
 
 

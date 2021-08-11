@@ -15,7 +15,7 @@ class CreateFlightsTable extends Migration
     {
         Schema::create('flights', function (Blueprint $table) {
             $table->id('id');
-            $table->integer('downloads');
+            $table->integer('downloads')->default(0);
             $table->timestamps();
         });
     }

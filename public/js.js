@@ -1,4 +1,5 @@
 
+
 var btn = document.getElementById('logoff');
 
 function off() { 
@@ -46,7 +47,7 @@ $('#aqui').on('change', function(){
 				//console.log(obj);
 				
 
-				$(".table > tbody").append('<tr><td>'+valor.id+'</td>'+'<td>'+valor.nome+'</td><td>' + valor.textoarea+'</td>'+ '<td class="dw"><a href="http://localhost:8000/storage/app/public/'+valor.file_path +  '" '+ '  download  > CLIQUE</a>  </td></tr>');
+				$(".table > tbody").append('<tr><td>'+valor.id+'</td>'+'<td>'+valor.nome+'</td><td>' + valor.textoarea+'</td>'+ '<td ><a href="http://localhost:8000/storage/app/public/'+valor.file_path +  '" '+ ' class="dw" download  > CLIQUE</a>  </td></tr>');
 				
 				
 				$(".dw").on('click', function(){
@@ -54,43 +55,41 @@ $('#aqui').on('change', function(){
 					
 					// window.open('http://localhost:8000/teste/download','_blank');
 					
-					$.get("/teste/download").done(function(){
-						$.ajax({
-							url:"/teste/download",
-							type:'POST',
-							dataType: 'json',
-							
-						})
-
+					$.post("/teste/download",{_token:$("meta[name='csrf-token']").attr('content'),id:x}).done(function(){ //USANDO O JQERY PARA A REQUISIÇÃO E PARA PASSAR O _TOKEN CSRV.
 						
-
-
+						var count = 0;
+						
+						
+					
 					})
+
 					
 					
 					
-					
-				})
+				
+				})		
 
 				
 				
-			});
+			})
 			
 
 			
 
 		
-		});	
+		})
 
 		
 	})
 
-	
 
-
-	
-	
 })
+	
+
+
+	
+	
+
 	
 	
 

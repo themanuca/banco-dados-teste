@@ -41,4 +41,4 @@ Route::get('logout', function(){
 Route::get('/teste','App\Http\Controllers\HomeController@ontetomany');
 
 
-Route::get('/teste/download', 'App\Http\Controllers\HomeController@conluidoDW');
+Route::post('/teste/download', 'App\Http\Controllers\HomeController@conluidoDW');
