@@ -128,13 +128,18 @@ class HomeController extends Controller
 
         // CONSIGO FAZER O SAVE NO BANCO A CADA CLIQUI NO DOWNLOAD, POREM VAI SALVANDO COMO CADA ITEM NOVO.
 
-        $dwc =  Flight::where('id',1)->get()->first(); // AQUI EU PUXO OS DADOS DO BANCO
+        $dwc =  Flight::where('id',1)->get()->first(); // AQUI EU PUXO OS DADOS DO BANCO   // AQUI POSSO PASSAR O CAMINHO DA MODEL PRODUTO E A TABELA DOWNLAODS DE LÁ, ESPECIFICANDO CADA ITEM ATRAVEZ DE SEU ID, PARA ISSO, PRECISO DO ID OU NOME DO ITEM PARA DOWNLOADS;
         
+        echo $dwc;
+
         $value = $dwc->downloads += 1; // AQUI ACESSO O ITEM DA TABELA E FAÇO INCREMENTO
 
         $v=Flight::where('id',1)->update(['downloads'=> $value]); // AQUI PASSO O COMANDO DE UPDATE PARA O BANCO
         
         echo $v;
+
+
+        //PRECISO PASSAR O ID OU NOME DA CATEGORIA DO ITEM NA ROTA JQUERY, PARA O LARAVEL SABER DE QUAL ITEM SE TRATA. PARA ISSO PRECISO PASSAR NA ROTA 
 
         // $count = new Flight;
         // $count->downloads ++;
