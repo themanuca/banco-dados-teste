@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\categorias;
 use App\Models\subcategorias;
 use App\Models\Produto;
+use App\Models\Flight;
 use Cache;
 class HomeController extends Controller
 {
@@ -18,7 +19,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {   
-
+        
         $this->objsub = new subcategorias();
         $this->objcat = new categorias();
         $this->middleware('auth');
@@ -122,16 +123,10 @@ class HomeController extends Controller
 
 
     
-    public function conluidoDW($request)
+    public function conluidoDW(Request $request)
     {
-
-        //USANDO A MODEL / TABELA "SUBCATEGORIA", PARA ARMAZENAR O QUANTIDADE DE DOWNLOAD. APENAS PREGUIÇA DE CRIAR UM OUTRA.
-
-        $QtdParcela = $request->get('count');
-        echo $QtdParcela; //PASSANDO OS PARAMETROS DE BUSCA PARA PUXAR DO BANCO
-
-
         
+       
     }
 
 

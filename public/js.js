@@ -55,8 +55,13 @@ $('#aqui').on('change', function(){
 					// window.open('http://localhost:8000/teste/download','_blank');
 					
 					$.get("/teste/download").done(function(){
-						var count = 0;
-						console.log(count);
+						$.ajax({
+							url:"/teste/download",
+							type:'POST',
+							dataType: 'json',
+							
+						})
+
 						
 
 
