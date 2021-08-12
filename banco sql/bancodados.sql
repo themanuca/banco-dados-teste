@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 12-Ago-2021 às 02:54
+-- Tempo de geração: 12-Ago-2021 às 16:11
 -- Versão do servidor: 10.4.19-MariaDB
 -- versão do PHP: 8.0.7
 
@@ -56,19 +56,6 @@ CREATE TABLE `failed_jobs` (
   `payload` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
   `exception` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
   `failed_at` timestamp NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
--- --------------------------------------------------------
-
---
--- Estrutura da tabela `flights`
---
-
-CREATE TABLE `flights` (
-  `id` bigint(20) UNSIGNED NOT NULL,
-  `downloads` int(11) NOT NULL DEFAULT 0,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -129,8 +116,11 @@ CREATE TABLE `produtos` (
 --
 
 INSERT INTO `produtos` (`id`, `nome`, `categoria_id`, `textoarea`, `file_path`, `downloads`, `created_at`, `updated_at`) VALUES
-(1, 'CHAPADINHA', 1, 'Dados IBGE da cidade', '5583bc7d90f48ec9efa5a2771d96e06e.pdf', 9, '2021-08-12 03:05:42', '2021-08-12 03:51:02'),
-(2, 'São Luis', 3, 'DADOS DE SEGURANÇA', '4cc2627479473e4fd6417c167e153bf3.pdf', 10, '2021-08-12 03:43:27', '2021-08-12 03:51:19');
+(1, 'CHAPADINHA', 1, 'Dados IBGE da cidade', '5583bc7d90f48ec9efa5a2771d96e06e.pdf', 18, '2021-08-12 03:05:42', '2021-08-12 16:57:02'),
+(2, 'São Luis', 3, 'DADOS DE SEGURANÇA', '4cc2627479473e4fd6417c167e153bf3.pdf', 15, '2021-08-12 03:43:27', '2021-08-12 16:57:47'),
+(3, 'IMPERATRIZ', 2, 'A CIDADE DOS MILIONARIOS', 'cf6a19c3cb6b31b74f0849ebe3188fa7.rar', 2, '2021-08-12 17:00:42', '2021-08-12 17:01:22'),
+(4, 'SÃO JOÃP DOS PATOS', 2, 'CIDADE RICA', '73126f5af72169f2b939f60606484411.rar', 0, '2021-08-12 17:03:39', '2021-08-12 17:03:39'),
+(5, 'SÃO JOÃP DOS PATOS', 2, 'CIDADE RICA', 'f670a5256282995bf5ea3ddd1ae1d0c1.rar', 0, '2021-08-12 17:04:30', '2021-08-12 17:04:30');
 
 -- --------------------------------------------------------
 
@@ -175,12 +165,6 @@ ALTER TABLE `failed_jobs`
   ADD UNIQUE KEY `failed_jobs_uuid_unique` (`uuid`);
 
 --
--- Índices para tabela `flights`
---
-ALTER TABLE `flights`
-  ADD PRIMARY KEY (`id`);
-
---
 -- Índices para tabela `migrations`
 --
 ALTER TABLE `migrations`
@@ -222,12 +206,6 @@ ALTER TABLE `failed_jobs`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT de tabela `flights`
---
-ALTER TABLE `flights`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
-
---
 -- AUTO_INCREMENT de tabela `migrations`
 --
 ALTER TABLE `migrations`
@@ -237,7 +215,7 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT de tabela `produtos`
 --
 ALTER TABLE `produtos`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de tabela `users`
