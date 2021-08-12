@@ -38,7 +38,7 @@ Route::get('logout', function(){
  })->name('logout');
 
 
-Route::get('/teste','App\Http\Controllers\HomeController@ontetomany');
+Route::get('/func','App\Http\Controllers\HomeController@functiondw');
 
 
-Route::post('/teste/download', 'App\Http\Controllers\HomeController@conluidoDW');
+Route::post('/func/download', 'App\Http\Controllers\HomeController@conluidoDW');

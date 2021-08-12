@@ -91,19 +91,19 @@ class HomeController extends Controller
 
         ]);
         
-        return redirect()->back();
+        return redirect('/'); // APÓS O LOGIN, O USUARIO É REDIRECIONADO PARA A TABELA
     }
 
 
 
-    public function ontetomany(Request $request)
+    public function functiondw(Request $request)
     {   
 
         $input = $request->all();
         $categoria = categorias::where('categoria',$input['categoria'])->get()->first(); //PASSANDO OS PARAMETROS DE BUSCA PARA PUXAR DO BANCO
         
         
-        $dados = $categoria->dados()->get();
+        $dados = $categoria->dados()->get(); //puxa dados da model categoria, de acordo com a key da categoria e produto
 
         return response ()->json( //ENVIANDO OS VALORS JSON PARA O JQUERY (REDE DO INSPECIONAR)
             $dados
@@ -120,13 +120,13 @@ class HomeController extends Controller
         // CONSIGO FAZER O SAVE NO BANCO A CADA CLIQUI NO DOWNLOAD, POREM VAI SALVANDO COMO CADA ITEM NOVO.
         $input = $request->all();
 
-        $dwc =  Produto::where('id', 1)->get()->first(); // AQUI EU PUXO OS DADOS DO BANCO   // AQUI POSSO PASSAR O CAMINHO DA MODEL PRODUTO E A TABELA DOWNLAODS DE LÁ, ESPECIFICANDO CADA ITEM ATRAVEZ DE SEU ID, PARA ISSO, PRECISO DO ID OU NOME DO ITEM PARA DOWNLOADS;
+        $dwc =  Produto::where('file_path', $input['file_path'])->get()->first(); // AQUI EU PUXO OS DADOS DO BANCO   // AQUI POSSO PASSAR O CAMINHO DA MODEL PRODUTO E A TABELA DOWNLAODS DE LÁ, ESPECIFICANDO CADA ITEM ATRAVEZ DE SEU ID, PARA ISSO, PRECISO DO ID OU NOME DO ITEM PARA DOWNLOADS;
         
         echo $dwc;
 
         $value = $dwc->downloads += 1; // AQUI ACESSO O ITEM DA TABELA E FAÇO INCREMENTO
 
-        $v=Produto::where('id',1)->update(['downloads'=> $value]); // AQUI PASSO O COMANDO DE UPDATE PARA O BANCO
+        $v=Produto::where('file_path',$input['file_path'])->update(['downloads'=> $value]); // AQUI PASSO O COMANDO DE UPDATE PARA O BANCO
         
         echo $v;
 

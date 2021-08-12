@@ -29,7 +29,7 @@ $('#aqui').on('change', function(){
 			$("select[name='subcategoria']").append('<option value='+ value.id + '>' + value.categoria+'</option>'); //AQUI PEGO OS VALORES DA SUBCATEGORIA, VALORES QUE FICA TABELA DE CATEGORIA, ONDE CADA UM SE DIFERENCIA PELO SEU ID, MESMO NA MESMA TABELA. (NESSE CASO NÃO TEM NENHUM VALOR)
 		});
 		
-		$.getJSON("/teste/",{categoria:s}) //AQUI FAÇO UMA REQUISIÇÃO JQUERY PARA PEGAR O VALORES JOGADO PELO LARAVEL NA ROTA, ATRAVES DA CONTROLLERS.
+		$.getJSON("/func/",{categoria:s}) //AQUI FAÇO UMA REQUISIÇÃO JQUERY PARA PEGAR O VALORES JOGADO PELO LARAVEL NA ROTA, ATRAVES DA CONTROLLERS.
 			.done(function(dados){
 			//console.log(dados);
 
@@ -47,19 +47,22 @@ $('#aqui').on('change', function(){
 				//console.log(obj);
 				
 
-				$(".table > tbody").append('<tr><td>'+valor.id+'</td>'+'<td>'+valor.nome+'</td><td>' + valor.textoarea+'</td>'+ '<td ><a href="http://localhost:8000/storage/app/public/'+valor.file_path +  '" '+ ' class="dw" download  > CLIQUE</a>  </td></tr>');
+				$(".table > tbody").append('<tr><td>'+valor.id+'</td>'+'<td>'+valor.nome+'</td><td>' + valor.textoarea+'</td>'+ '<td ><a href="http://localhost:8000/storage/app/public/'+valor.file_path +  '" '+ ' class="dw"  download cod="'+valor.file_path+'" > CLIQUE</a>  </td></tr>');
 				
 				
-				$(".dw").on('click', function(){
-					
+				$('.dw').on('click', function(){
+				
+					var c = $(this).attr('cod'); //AQUI PEGO O VALOR DO ATRIBUTO PASSADO NA LINHA ACIIMA, O  DO APPEND
+					//console.log(c);
 					
 					// window.open('http://localhost:8000/teste/download','_blank');
 					
-					$.post("/teste/download",{_token:$("meta[name='csrf-token']").attr('content'),id:x}).done(function(){ //USANDO O JQERY PARA A REQUISIÇÃO E PARA PASSAR O _TOKEN CSRV.
+					$.post("/func/download",{_token:$("meta[name='csrf-token']").attr('content'),file_path:c}).done(function(){ //USANDO O JQERY PARA A REQUISIÇÃO E PARA PASSAR O _TOKEN CSRV.
 						
 						
 						
 						
+					
 					
 					})
 
