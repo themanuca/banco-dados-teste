@@ -16,20 +16,20 @@ contDW = 0;
 $('#aqui').on('change', function(){
 
 	//console.log($(this))
-	var x = $("#aqui :selected").val();
-	var s = $("#aqui :selected").text();
+	var x = $("#aqui :selected").val();  //AQUI PEGO O VALOR DA SELECT
+	var s = $("#aqui :selected").text(); //AQUI PEGO O NOME DA SELECT
 	var k = "Ferrari";
 
-	$.get( "/categoria/", { id:x} )
+	$.get( "/categoria/", { id:x} ) //AQUI FAÇO UMA REQUISIÇÃO JQUERY PARA PEGAR O VALORES JOGADO PELO LARAVEL NA ROTA, ATRAVES DA CONTROLLERS.
   		.done(function( data ) {
 		
 		$("select[name='subcategoria']").html("");
-		$.each(data,function(index,value){
+		$.each(data,function(index,value){ //LAÇO PARA A CRIAÇÃO DA <SELECTED> COM VALORES DA SUB
 			
-			$("select[name='subcategoria']").append('<option value='+ value.id + '>' + value.categoria+'</option>');
+			$("select[name='subcategoria']").append('<option value='+ value.id + '>' + value.categoria+'</option>'); //AQUI PEGO OS VALORES DA SUBCATEGORIA, VALORES QUE FICA TABELA DE CATEGORIA, ONDE CADA UM SE DIFERENCIA PELO SEU ID, MESMO NA MESMA TABELA. (NESSE CASO NÃO TEM NENHUM VALOR)
 		});
 		
-		$.getJSON("/teste/",{categoria:s})
+		$.getJSON("/teste/",{categoria:s}) //AQUI FAÇO UMA REQUISIÇÃO JQUERY PARA PEGAR O VALORES JOGADO PELO LARAVEL NA ROTA, ATRAVES DA CONTROLLERS.
 			.done(function(dados){
 			//console.log(dados);
 
@@ -43,7 +43,7 @@ $('#aqui').on('change', function(){
 			
 			
 			
-			$.each(obj,function(index,valor){
+			$.each(obj,function(index,valor){ //LAÇO PARA A CRIAÇÃO DA TABELA <TD> <TR>
 				//console.log(obj);
 				
 
@@ -57,7 +57,7 @@ $('#aqui').on('change', function(){
 					
 					$.post("/teste/download",{_token:$("meta[name='csrf-token']").attr('content'),id:x}).done(function(){ //USANDO O JQERY PARA A REQUISIÇÃO E PARA PASSAR O _TOKEN CSRV.
 						
-						var count = 0;
+						
 						
 						
 					

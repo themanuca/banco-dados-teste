@@ -13,9 +13,9 @@ class categorias extends Model
 
 
     
-    public function idcat(){
-        return $this->hasMany(related:'App\Models\subcategorias', foreignKey:'idsubcategoria');
-    }
+    // public function idcat(){
+    //     return $this->hasMany(related:'App\Models\subcategorias', foreignKey:'idsubcategoria');
+    // }
 
     // public function sub(){
     //     return $this->belongsToMany('App\Models\subcategorias');

@@ -19,6 +19,7 @@ class CreateProdutosTable extends Migration
             $table->integer('categoria_id');
             $table->string('textoarea');
             $table->string('file_path');
+            $table->integer('downloads')->default(0);
             $table->timestamps();
         
         

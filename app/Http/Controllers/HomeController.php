@@ -4,9 +4,8 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
 use App\Models\categorias;
-use App\Models\subcategorias;
 use App\Models\Produto;
-use App\Models\Flight;
+
 
 class HomeController extends Controller
 {
@@ -20,8 +19,7 @@ class HomeController extends Controller
     public function __construct()
     {   
         
-        $this->objsub = new subcategorias();
-        $this->objcat = new categorias();
+        $this->objcat = new categorias();  //AQUI TORNA A MODEL EM OBJETO, FICA MAIS FACIL MANIPULAR
         $this->middleware('auth');
     }
 
@@ -40,14 +38,7 @@ class HomeController extends Controller
 
     public function categoria(Request $request)     //PUXAR OS DADOS DA CATEGORIA PRINCIPAL
     {   
-        // $user = $request->categorias; // returns an instance of the authenticated user...
-        // $id = $request->user()->id;
-        // dd($id);
-        // $id = categorias::all();
-        // $catt = categorias::find($id);
-        // dd($catt);
-        // $sub = $catt->idcat;
-        // dd($sub);
+       
 
 
 
@@ -127,24 +118,22 @@ class HomeController extends Controller
     {
 
         // CONSIGO FAZER O SAVE NO BANCO A CADA CLIQUI NO DOWNLOAD, POREM VAI SALVANDO COMO CADA ITEM NOVO.
+        $input = $request->all();
 
-        $dwc =  Flight::where('id',1)->get()->first(); // AQUI EU PUXO OS DADOS DO BANCO   // AQUI POSSO PASSAR O CAMINHO DA MODEL PRODUTO E A TABELA DOWNLAODS DE LÁ, ESPECIFICANDO CADA ITEM ATRAVEZ DE SEU ID, PARA ISSO, PRECISO DO ID OU NOME DO ITEM PARA DOWNLOADS;
+        $dwc =  Produto::where('id', 1)->get()->first(); // AQUI EU PUXO OS DADOS DO BANCO   // AQUI POSSO PASSAR O CAMINHO DA MODEL PRODUTO E A TABELA DOWNLAODS DE LÁ, ESPECIFICANDO CADA ITEM ATRAVEZ DE SEU ID, PARA ISSO, PRECISO DO ID OU NOME DO ITEM PARA DOWNLOADS;
         
         echo $dwc;
 
         $value = $dwc->downloads += 1; // AQUI ACESSO O ITEM DA TABELA E FAÇO INCREMENTO
 
-        $v=Flight::where('id',1)->update(['downloads'=> $value]); // AQUI PASSO O COMANDO DE UPDATE PARA O BANCO
+        $v=Produto::where('id',1)->update(['downloads'=> $value]); // AQUI PASSO O COMANDO DE UPDATE PARA O BANCO
         
         echo $v;
 
 
         //PRECISO PASSAR O ID OU NOME DA CATEGORIA DO ITEM NA ROTA JQUERY, PARA O LARAVEL SABER DE QUAL ITEM SE TRATA. PARA ISSO PRECISO PASSAR NA ROTA 
 
-        // $count = new Flight;
-        // $count->downloads ++;
-        // $count->save();
-
+        //PASSAR O INPUT QUE VEM DA FRONT, PARA SER AUTOMATICO A SELEÇÃO DE QUAL DOWNLOADS VAI CONTAR.
     }
 
 

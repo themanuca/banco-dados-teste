@@ -16,7 +16,7 @@ class Categorias extends Migration
         Schema::create('categorias', function (Blueprint $table) {
             $table->id();
             $table->string('categoria')->unique();
-            $table->double('idcategoria')->unique();
+            $table->integer('idcategoria')->default(0);
         });
     }
 
