@@ -23,11 +23,11 @@ $('#aqui').on('change', function(){
 	$.get( "/categoria/", { id:x} ) //AQUI FAÇO UMA REQUISIÇÃO JQUERY PARA PEGAR O VALORES JOGADO PELO LARAVEL NA ROTA, ATRAVES DA CONTROLLERS.
   		.done(function( data ) {
 		
-		$("select[name='subcategoria']").html("");
-		$.each(data,function(index,value){ //LAÇO PARA A CRIAÇÃO DA <SELECTED> COM VALORES DA SUB
+		// $("select[name='subcategoria']").html("");
+		// $.each(data,function(index,value){ //LAÇO PARA A CRIAÇÃO DA <SELECTED> COM VALORES DA SUB
 			
-			$("select[name='subcategoria']").append('<option value='+ value.id + '>' + value.categoria+'</option>'); //AQUI PEGO OS VALORES DA SUBCATEGORIA, VALORES QUE FICA TABELA DE CATEGORIA, ONDE CADA UM SE DIFERENCIA PELO SEU ID, MESMO NA MESMA TABELA. (NESSE CASO NÃO TEM NENHUM VALOR)
-		});
+		// 	$("select[name='subcategoria']").append('<option value='+ value.id + '>' + value.categoria+'</option>'); //AQUI PEGO OS VALORES DA SUBCATEGORIA, VALORES QUE FICA TABELA DE CATEGORIA, ONDE CADA UM SE DIFERENCIA PELO SEU ID, MESMO NA MESMA TABELA. (NESSE CASO NÃO TEM NENHUM VALOR)
+		// });
 		
 		$.getJSON("/func/",{categoria:s}) //AQUI FAÇO UMA REQUISIÇÃO JQUERY PARA PEGAR O VALORES JOGADO PELO LARAVEL NA ROTA, ATRAVES DA CONTROLLERS.
 			.done(function(dados){
@@ -42,12 +42,12 @@ $('#aqui').on('change', function(){
 			//console.log(obj);
 			
 			
-			
+			$(".table > tbody").html("")
 			$.each(obj,function(index,valor){ //LAÇO PARA A CRIAÇÃO DA TABELA <TD> <TR>
 				//console.log(obj);
 				
 
-				$(".table > tbody").append('<tr><td>'+valor.id+'</td>'+'<td>'+valor.nome+'</td><td>' + valor.textoarea+'</td>'+ '<td ><a href="http://localhost:8000/storage/app/public/'+valor.file_path +  '" '+ ' class="dw"  download cod="'+valor.file_path+'" > CLIQUE</a>  </td></tr>');
+				$(".table > tbody").append('<tr><td>'+valor.id+'</td>'+'<td>'+valor.nome+'</td><td>' + valor.textoarea+'</td>'+ '<td ><a href="http://localhost:8000/storage/app/public/'+valor.file_path +  '" '+ ' class="dw"   download="'+valor.file_path +'" cod="'+valor.file_path+'" > CLIQUE</a>  </td></tr>');
 				
 				
 				$('.dw').on('click', function(){

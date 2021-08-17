@@ -34,74 +34,73 @@
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
-            <a class="navbar-brand" href="#">Hidden brand</a>
+            <a class="navbar-brand" href="#">IMESC</a>
               <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
               <li class="nav-item active">
                 <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
               </li>
-              <li class="nav-item">
-              <a class="nav-link" href="{{ url('/tabela') }}">Tabela</a>
-              </li>
-              <li class="nav-item">
-              <a class="nav-link" href="{{ route('login') }}">Login</a>
-              </li>
+              
+              
               <li class='nav-item'>
                 <a class='nav-link' href="{{route('produto')}}">Cadastrar dados</a>
               </li>                 
               </ul>
-            <form class="form-inline my-2 my-lg-0">
-              <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-              <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-            </form>
+            
+
+            <a class="btn btn-danger" href="{{route('logout')}}">Sair</a>
+
           </div>
       </nav>
       
-
+      <br> <br>
+    
       
-    <select class="form-select form-select-lg mb-3 selectCategoria" aria-label=".form-select-lg example" id='aqui'>
-      <option>Selecione uma cateogoria</option>
-      @foreach ($cat as $cat )
+    <div class="row">
+       
+        <div class="col-2">
+          <select class="form-select form-select-lg mb-3 selectCategoria" aria-label=".form-select-lg example" id='aqui'>
+            <option>Selecione uma cateogoria</option>
+            @foreach ($cat as $cat )
+              
+              <option class='ds' value="{{$cat->id}}">{{$cat->categoria}}</option>
+            @endforeach)
+          </select>
+        </div>
         
-        <option class='ds' value="{{$cat->id}}">{{$cat->categoria}}</option>
-      @endforeach)
-    </select>
-   
-    
-    
-      
-         
-    <select id='baixo' class="form-select form-select-sm subcategoria" aria-label=".form-select-sm example" name='subcategoria'>
-      
-    </select>
-  
-
-    <div class="resultado" name='resultado'>
-
-      <table class='table'>
-        <thead>
-          <tr>
-            <th scope="col">ID</th>
-            <th scope="col">NOME</th>
-            <th scope="col">SOBRE</th>
-            <th scope="col">DOWNLOAD</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
+        
+          
             
-          </tr>
-        </tbody>
+      
+      
+        <div class="col-10">
+          <div class="resultado" name='resultado'>
+
+            <table class='table'>
+              <thead>
+                <tr>
+                  <th scope="col">ID</th>
+                  <th scope="col">NOME</th>
+                  <th scope="col">SOBRE</th>
+                  <th scope="col">DOWNLOAD</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  
+                </tr>
+              </tbody>
 
 
 
-      </table>
-    
+            </table>
+          
+          </div>
+
+
+        </div>  
+      
+
     </div>
-
-
-    
-
-
 
 
 
